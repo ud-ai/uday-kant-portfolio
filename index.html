@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio of Uday Kant - Computer Science student, AI and frontend developer." />
+    <title>Uday Kant — Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="cursor-dot"></div><div class="cursor-ring"></div>
+    <header class="nav-wrap">
+      <a class="brand" href="#home" aria-label="Uday Kant home">UK<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#academics">Academics</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-contact" href="mailto:udaykant180@gmail.com">Let's talk <i>↗</i></a>
+    </header>
+
+    <main id="home">
+      <section class="hero section">
+        <div class="eyebrow"><span></span> AVAILABLE FOR OPPORTUNITIES</div>
+        <div class="hero-copy">
+          <p class="intro">Hello, I’m Uday — a computer science student who enjoys turning difficult problems into useful, elegant software.</p>
+          <h1>Building<br /><em>intelligent</em> paths.</h1>
+        </div>
+        <div class="hero-foot">
+          <p>AI × WEB × ANDROID<br />BASED IN INDIA</p>
+          <a class="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><b>↓</b></a>
+        </div>
+        <svg class="hero-path" viewBox="0 0 1440 680" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-30,520 C230,620 255,430 470,520 S810,655 900,405 S1210,110 1490,245" />
+          <circle cx="900" cy="405" r="7" /><circle class="pulse" cx="900" cy="405" r="18" />
+        </svg>
+      </section>
+
+      <section id="about" class="about section reveal">
+        <div class="section-label">01 / ABOUT ME</div>
+        <div class="about-grid">
+          <h2>I make software<br />with <em>direction.</em></h2>
+          <div>
+            <p class="body-copy">Currently pursuing a B.Tech in Computer Science at Narula Institute of Technology with a 9.05 CGPA. I’m drawn to the space where practical engineering meets human curiosity: AI experiences, thoughtful interfaces, and systems that learn.</p>
+            <div class="fact-row"><span>TOP 5%</span><span>B.TECH CSE BATCH</span><span>2023 — 2027</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="work section">
+        <div class="section-head reveal"><div class="section-label">02 / SELECTED WORK</div><p>Two projects, one obsession:<br />make technology feel more capable.</p></div>
+        <article class="project project-rag reveal">
+          <div class="project-number">01</div>
+          <div class="project-content"><span class="project-type">AI / KNOWLEDGE SYSTEM</span><h2>Medical<br /><em>RAG Chatbot</em></h2><p>Context-aware medical conversations backed by semantic search, vector embeddings, and external knowledge sources.</p><div class="tags"><span>PYTHON</span><span>LLMs</span><span>RAG</span><span>VECTOR DB</span></div></div>
+          <div class="orbital" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="core">✦</div><span>RETRIEVE</span><span>REASON</span><span>RESPOND</span></div>
+        </article>
+        <article class="project project-code reveal">
+          <div class="project-number">02</div>
+          <div class="project-content"><span class="project-type">CHROME EXTENSION / AI</span><h2>CodeBlitz<br /><em>Learning Assistant</em></h2><p>An adaptive AI mock interviewer for LeetCode—delivering contextual hints while building genuine algorithmic intuition.</p><div class="tags"><span>REACT</span><span>TYPESCRIPT</span><span>GEMINI API</span><span>VITE</span></div></div>
+          <div class="code-window" aria-hidden="true"><div class="window-top"><i></i><i></i><i></i><span>interview.ts</span></div><pre><b>const</b> <strong>learn</strong> = <i>async</i> () =&gt; {
+  <b>const</b> hint = <i>await</i> ai.<strong>guide</strong>({
+    problem, level: <u>"adaptive"</u>
+  });
+  <b>return</b> hint;<span class="caret">_</span>
+}</pre></div>
+        </article>
+      </section>
+
+      <section id="stack" class="stack section reveal">
+        <div class="section-label">03 / TOOLKIT</div>
+        <div class="stack-top"><h2>The things I<br />build with.</h2><p>A continuously evolving set of tools for bringing ideas from first sketch to shipped product.</p></div>
+        <div class="skills">
+          <div><span>01</span><h3>Languages</h3><p>Python · Java · Kotlin<br />JavaScript · C++</p></div>
+          <div><span>02</span><h3>Frontend</h3><p>React · Next.js · Tailwind<br />Jetpack Compose</p></div>
+          <div><span>03</span><h3>Systems</h3><p>Firebase · Redis · Kafka<br />Docker · Kubernetes</p></div>
+          <div><span>04</span><h3>Intelligence</h3><p>Machine Learning · RAG<br />Semantic Search</p></div>
+        </div>
+      </section>
+
+      <section id="academics" class="academics section reveal">
+        <div class="section-label">04 / ACADEMICS &amp; TRAINING</div>
+        <div class="academic-layout">
+          <h2>A curious mind,<br /><em>under construction.</em></h2>
+          <div class="education-list">
+            <article><span>2023 — 2027</span><h3>B.Tech in Computer Science</h3><p>Narula Institute of Technology · West Bengal, India</p><strong>CGPA 9.05</strong></article>
+            <article><span>2022</span><h3>CBSE</h3><p>BNS DAV Public School · Jharkhand, India</p><strong>86.8%</strong></article>
+          </div>
+        </div>
+        <div class="cert-strip"><span>GENERATIVE AI TRAINING</span><span>MEAN FULL STACK DEVELOPMENT</span><span>SAP S/4HANA DEVELOPMENT</span><span>NPTEL JAVA — ELITE</span></div>
+      </section>
+
+      <section class="proof section reveal">
+        <div class="section-label">05 / SIGNALS</div>
+        <div class="proof-grid"><div><strong>300+</strong><span>DSA problems solved</span></div><div><strong>100</strong><span>Lighthouse performance score</span></div><div><strong>5</strong><span>volunteers led as coordinator</span></div></div>
+        <p class="achievements">GSSoC 2025 contributor · Smart India Hackathon participant · NPTEL Java (Elite, 87%) · SAP S/4HANA Development</p>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="contact-glow"></div><div class="section-label">06 / GET IN TOUCH</div>
+        <h2>Let’s make the<br /><em>next move.</em></h2>
+        <a class="email-link" href="mailto:udaykant180@gmail.com">udaykant180@gmail.com <span>↗</span></a>
+        <div class="contact-bottom"><span>© 2026 UDAY KANT</span><span>ENGINEERED WITH CURIOSITY</span><a href="#home">BACK TO TOP ↑</a></div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
