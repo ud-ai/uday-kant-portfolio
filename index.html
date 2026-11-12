@@ -1,149 +1,365 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of Uday Kant - Computer Science student, AI and frontend developer." />
-    <title>Uday Kant — Developer Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uday Kant, software developer</title>
+    <meta name="description" content="Uday Kant builds AI systems, web interfaces and Android apps. Computer science student at Narula Institute of Technology, India." />
+    <meta name="theme-color" content="#090C12" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Uday Kant, software developer" />
+    <meta property="og:description" content="RAG chatbots, AI learning tools, web interfaces and Android apps." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23090c12'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23fb5e28'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script>
+      (function (d) {
+        var s = false;
+        try {
+          var v = localStorage.getItem('uk-motion');
+          s = v ? v === '0' : matchMedia('(prefers-reduced-motion: reduce)').matches;
+        } catch (e) {}
+        d.className = 'js' + (s ? ' still' : '');
+      })(document.documentElement);
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="noise"></div>
-    <div class="cursor-dot"></div><div class="cursor-ring"></div>
-    <header class="nav-wrap">
-      <a class="brand" href="#home" aria-label="Uday Kant home">UK<span>.</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="#about">About</a><a href="#projects">Projects</a><a href="#academics">Academics</a><a href="#certifications">Certifications</a><a href="#resume">Resume</a><a href="#contact">Contact</a>
+    <!-- Loader -->
+    <div class="loader" role="dialog" aria-modal="true" aria-label="Loading Uday Kant's portfolio">
+      <div class="loader__mid">
+        <svg class="loader__mark" viewBox="0 0 44 14" aria-hidden="true"><circle cx="5" cy="7" r="3" /><path d="M12 7h12" pathLength="1" /><rect x="29" y="2" width="10" height="10" rx="1.5" pathLength="1" /></svg>
+        <p class="loader__name"><span class="name__a">Uday</span> <span class="name__b">Kant</span><span class="pt pt--stop"></span></p>
+        <div class="loader__enter">
+          <button class="btn btn--accent loader__go" type="button"><span class="pt" aria-hidden="true"></span>Enter, with sound</button>
+          <button class="ghost-btn loader__mute" type="button">Enter without sound</button>
+        </div>
+      </div>
+      <p class="loader__words" aria-hidden="true" data-words="AI|RAG|LLMs|React|Next.js|TypeScript|Android|Kotlin|Compose|Firebase|Redis|Kafka|Docker|Kubernetes">AI</p>
+      <p class="loader__count" aria-hidden="true"><b>000</b><span>%</span></p>
+      <div class="loader__bar" aria-hidden="true"><i></i></div>
+    </div>
+
+    <a class="skip" href="#work">Skip to the work</a>
+
+    <!-- Top bar -->
+    <header class="bar">
+      <a class="bar__mark" href="#top" aria-label="Uday Kant, back to top">
+        <span class="name"><span class="name__a">Uday</span> <span class="name__b">Kant</span><span class="pt pt--stop" aria-hidden="true"></span></span>
+      </a>
+      <nav class="bar__nav" aria-label="Sections">
+        <a href="#work" data-sec="work">Work</a>
+        <a href="#about" data-sec="about">About</a>
+        <a href="#index" data-sec="index">Index</a>
+        <a href="UdayResume.pdf?v=2026-11" target="_blank" rel="noopener">Resume</a>
       </nav>
-      <a class="nav-contact" href="mailto:udaykant180@gmail.com">Let's talk <i>↗</i></a>
+      <button class="bar__sound sound-sw" type="button" aria-pressed="false">Sound</button>
+      <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
     </header>
 
-    <main id="home">
-      <section class="hero section">
-        <div class="eyebrow"><span></span> AVAILABLE FOR OPPORTUNITIES</div>
-        <div class="hero-copy">
-          <p class="intro">Hello, I’m Uday — a computer science student who enjoys turning difficult problems into useful, elegant software.</p>
-          <h1>Building<br /><em>intelligent</em> paths.</h1>
-        </div>
-        <div class="hero-foot">
-          <p>AI × WEB × ANDROID<br />BASED IN INDIA</p>
-          <a class="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><b>↓</b></a>
-        </div>
-        <svg class="hero-path" viewBox="0 0 1440 680" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M-30,520 C230,620 255,430 470,520 S810,655 900,405 S1210,110 1490,245" />
-          <circle cx="900" cy="405" r="7" /><circle class="pulse" cx="900" cy="405" r="18" />
-        </svg>
-      </section>
+    <!-- Mobile menu -->
+    <div class="menu" id="menu" tabindex="-1" hidden>
+      <div class="menu__top">
+        <a class="menu__mark" href="#top"><span class="name"><span class="name__a">Uday</span> <span class="name__b">Kant</span><span class="pt pt--stop" aria-hidden="true"></span></span></a>
+        <button class="menu__x" type="button">Close</button>
+      </div>
+      <nav aria-label="Sections">
+        <ol class="menu__nav">
+          <li><a href="#work"><span class="menu__n">01</span><span class="menu__w">Work</span></a></li>
+          <li><a href="#about"><span class="menu__n">02</span><span class="menu__w">About</span></a></li>
+          <li><a href="#index"><span class="menu__n">03</span><span class="menu__w">Index</span></a></li>
+          <li><a href="UdayResume.pdf?v=2026-11" target="_blank" rel="noopener"><span class="menu__n">04</span><span class="menu__w">Resume</span></a></li>
+        </ol>
+      </nav>
+      <p class="menu__foot"><a href="mailto:udaykant180@gmail.com">udaykant180@gmail.com</a><button class="menu__sound sound-sw" type="button" aria-pressed="false">Sound</button></p>
+    </div>
 
-      <section id="about" class="about section reveal">
-        <div class="section-label">01 / ABOUT ME</div>
-        <div class="about-grid">
-          <h2>I make software<br />with <em>direction.</em></h2>
-          <div>
-            <p class="body-copy">Currently pursuing a B.Tech in Computer Science at Narula Institute of Technology with a 9.05 CGPA. I’m drawn to the space where practical engineering meets human curiosity: AI experiences, thoughtful interfaces, and systems that learn.</p>
-            <div class="fact-row"><span>TOP 5%</span><span>B.TECH CSE BATCH</span><span>2023 — 2027</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" class="work section">
-        <div class="section-head reveal"><div class="section-label">02 / SELECTED WORK</div><p>Two projects, one obsession:<br />make technology feel more capable.</p></div>
-        <article class="project project-rag reveal">
-          <div class="project-number">01</div>
-          <div class="project-content"><span class="project-type">AI / KNOWLEDGE SYSTEM</span><h2>Medical<br /><em>RAG Chatbot</em></h2><p>Context-aware medical conversations backed by semantic search, vector embeddings, and external knowledge sources.</p><div class="tags"><span>PYTHON</span><span>LLMs</span><span>RAG</span><span>VECTOR DB</span></div><div class="project-links"><a href="https://github.com/ud-ai/Medical_RAG_Chatbot" target="_blank" rel="noreferrer">View repo <span>↗</span></a></div></div>
-          <div class="orbital" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="core">✦</div><span>RETRIEVE</span><span>REASON</span><span>RESPOND</span></div>
-        </article>
-        <article class="project project-code reveal">
-          <div class="project-number">02</div>
-          <div class="project-content project-content-code">
-            <span class="project-type">CHROME EXTENSION / AI</span>
-            <div class="codeblitz-title">
-              <h2>CodeBlitz</h2>
-              <h3>Learning Assistant</h3>
+    <main>
+      <!-- HERO: scroll moves through the reel -->
+      <section class="hero" id="top" style="--n: 4">
+        <h1 class="sr">Uday Kant, software developer</h1>
+        <div class="hero__pin">
+          <canvas class="hero__field" data-scene="field" data-auto aria-hidden="true"></canvas>
+          <div class="reel" role="group" aria-roledescription="carousel" aria-label="Selected work">
+            <div class="reel__track">
+              <article class="card is-on" aria-label="Uday Kant, 2026" data-loop="media/intro.mp4" data-film="media/showreel.mp4" data-title="Showreel">
+                <canvas data-scene="path" aria-hidden="true"></canvas>
+                <div class="card__row">
+                  <span class="tab"><b>Uday Kant</b> <span>2026</span></span>
+                  <a class="go" href="UdayResume.pdf?v=2026-11" target="_blank" rel="noopener"><span class="go__l">Read the resume</span><svg class="go__ic" viewBox="0 0 58 58" aria-hidden="true"><path d="M23 35 35 23M25.5 23H35v9.5" /></svg></a>
+                </div>
+              </article>
+              <article class="card" aria-label="Medical RAG Chatbot" data-loop="media/rag.mp4" data-film="media/rag-demo.mp4" data-title="Medical RAG Chatbot">
+                <canvas data-scene="rag" aria-hidden="true"></canvas>
+                <div class="card__row">
+                  <span class="tab"><b>Medical RAG Chatbot</b> <span>AI</span></span>
+                  <a class="go" href="https://github.com/ud-ai/Medical_RAG_Chatbot" target="_blank" rel="noopener"><span class="go__l">View repo</span><svg class="go__ic" viewBox="0 0 58 58" aria-hidden="true"><path d="M23 35 35 23M25.5 23H35v9.5" /></svg></a>
+                </div>
+              </article>
+              <article class="card" aria-label="CodeBlitz" data-loop="media/codeblitz.mp4" data-film="media/codeblitz-demo.mp4" data-title="CodeBlitz">
+                <canvas data-scene="code" aria-hidden="true"></canvas>
+                <div class="card__row">
+                  <span class="tab"><b>CodeBlitz</b> <span>Chrome extension</span></span>
+                  <a class="go" href="https://github.com/ud-ai/CodeBlitz" target="_blank" rel="noopener"><span class="go__l">View repo</span><svg class="go__ic" viewBox="0 0 58 58" aria-hidden="true"><path d="M23 35 35 23M25.5 23H35v9.5" /></svg></a>
+                </div>
+              </article>
+              <article class="card" aria-label="300+ DSA problems" data-loop="media/dsa.mp4">
+                <canvas data-scene="grid" aria-hidden="true"></canvas>
+                <div class="card__row">
+                  <span class="tab"><b>300+ problems</b> <span>DSA</span></span>
+                  <a class="go" href="#about"><span class="go__l">Read the story</span><svg class="go__ic" viewBox="0 0 58 58" aria-hidden="true"><path d="M29 21v16M22 30l7 7 7-7" /></svg></a>
+                </div>
+              </article>
             </div>
-            <p>An adaptive AI mock interviewer for LeetCode—delivering contextual hints while building genuine algorithmic intuition.</p>
-            <div class="tags"><span>REACT</span><span>TYPESCRIPT</span><span>GEMINI API</span><span>VITE</span></div>
-            <div class="project-links"><a href="https://github.com/ud-ai/CodeBlitz" target="_blank" rel="noreferrer">View repo <span>↗</span></a></div>
           </div>
-          <div class="code-window" aria-hidden="true"><div class="window-top"><i></i><i></i><i></i><span>interview.ts</span></div><pre><b>const</b> <strong>learn</strong> = <i>async</i> () =&gt; {
-  <b>const</b> hint = <i>await</i> ai.<strong>guide</strong>({
-    problem, level: <u>"adaptive"</u>
-  });
-  <b>return</b> hint;<span class="caret">_</span>
-}</pre></div>
-        </article>
-      </section>
 
-      <section id="stack" class="stack section reveal">
-        <div class="section-label">03 / TOOLKIT</div>
-        <div class="stack-top"><h2>The things I<br />build with.</h2><p>A continuously evolving set of tools for bringing ideas from first sketch to shipped product.</p></div>
-        <div class="skills">
-          <div><span>01</span><h3>Languages</h3><p>Python · Java · Kotlin<br />JavaScript · C++</p></div>
-          <div><span>02</span><h3>Frontend</h3><p>React · Next.js · Tailwind<br />Jetpack Compose</p></div>
-          <div><span>03</span><h3>Systems</h3><p>Firebase · Redis · Kafka<br />Docker · Kubernetes</p></div>
-          <div><span>04</span><h3>Intelligence</h3><p>Machine Learning · RAG<br />Semantic Search</p></div>
-        </div>
-      </section>
+          <p class="hero__what" aria-live="polite"
+             data-w0="AI, web and Android. A computer science student who builds useful software."
+             data-w1="Context-aware medical answers from semantic search and vector embeddings."
+             data-w2="An AI mock interviewer for LeetCode that gives hints instead of answers."
+             data-w3="Daily practice in data structures and algorithms.">AI, web and Android. A computer science student who builds useful software.</p>
 
-      <section id="academics" class="academics section reveal">
-        <div class="section-label">04 / ACADEMICS &amp; TRAINING</div>
-        <div class="academic-layout">
-          <h2>A curious mind,<br /><em>under construction.</em></h2>
-          <div class="education-list">
-            <article><span>2023 — 2027</span><h3>B.Tech in Computer Science</h3><p>Narula Institute of Technology · West Bengal, India</p><strong>CGPA 9.05</strong></article>
-            <article><span>2022</span><h3>CBSE</h3><p>BNS DAV Public School · Jharkhand, India</p><strong>86.8%</strong></article>
+          <div class="dots" role="group" aria-label="Choose a card">
+            <button class="dots__b" type="button" aria-label="Uday Kant" aria-current="true"></button>
+            <button class="dots__b" type="button" aria-label="Medical RAG Chatbot"></button>
+            <button class="dots__b" type="button" aria-label="CodeBlitz"></button>
+            <button class="dots__b" type="button" aria-label="300+ DSA problems"></button>
           </div>
-        </div>
-      </section>
 
-      <section id="certifications" class="certifications section reveal">
-        <div class="section-label">05 / CERTIFICATIONS</div>
-        <div class="certifications-layout">
-          <h2>Validated by<br /><em>proof.</em></h2>
-          <div class="certifications-grid">
-            <article><span>01</span><h3>Generative AI Training</h3><p>Practical training focused on prompt design, model workflows, and applied AI systems.</p></article>
-            <article><span>02</span><h3>MEAN Full Stack Development</h3><p>Training across modern full-stack architecture, API integration, and deployment flows.</p></article>
-            <article><span>03</span><h3>SAP S/4HANA Development</h3><p>Enterprise development exposure with SAP tooling, workflow thinking, and process logic.</p></article>
-            <article><span>04</span><h3>NPTEL Java — Elite</h3><p>Elite certification with strong Java fundamentals and application-level problem solving.</p></article>
-          </div>
-        </div>
-      </section>
+          <p class="hero__line"><span class="hero__live"><img class="avatar" src="media/photo.jpg" alt="" width="28" height="28" hidden /><span class="pt"></span>Open to internships</span>B.Tech CSE at Narula Institute of Technology, CGPA 9.05. Based in India.</p>
 
-      <section class="proof section reveal">
-        <div class="section-label">06 / SIGNALS</div>
-        <div class="proof-grid"><div><strong>300+</strong><span>DSA problems solved</span></div><div><strong>100</strong><span>Lighthouse performance score</span></div><div><strong>5</strong><span>volunteers led as coordinator</span></div></div>
-        <p class="achievements">GSSoC 2025 contributor · Smart India Hackathon participant · NPTEL Java (Elite, 87%) · SAP S/4HANA Development</p>
-      </section>
-
-      <section id="resume" class="resume section reveal">
-        <div class="section-label">07 / RESUME</div>
-        <div class="resume-grid">
-          <div>
-            <h2>Take a closer<br /><em>look.</em></h2>
-            <p class="body-copy">Open the current resume PDF to review experience, education, and technical highlights in one place.</p>
-          </div>
-          <a class="resume-card" href="UdayResume.pdf" target="_blank" rel="noreferrer">
-            <span>PDF / LOCAL FILE</span>
-            <strong>View Resume</strong>
-            <p>Launch the latest resume in a new tab.</p>
+          <a class="btn btn--accent hero__cta" href="mailto:udaykant180@gmail.com">
+            <span class="pt" aria-hidden="true"></span>
+            <span class="roll"><span>Write an email</span><span aria-hidden="true" data-t="Write an email"></span></span>
           </a>
         </div>
       </section>
 
-      <section class="contact section" id="contact">
-        <div class="contact-glow"></div><div class="section-label">08 / GET IN TOUCH</div>
-        <h2>Let’s make the<br /><em>next move.</em></h2>
-        <a class="email-link" href="mailto:udaykant180@gmail.com">udaykant180@gmail.com <span>↗</span></a>
-        <div class="contact-links">
-          <a href="https://www.linkedin.com/in/uday-kant-61a242298/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
-          <a href="https://github.com/ud-ai" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+      <!-- WHAT I BUILD: pinned accordion + preview -->
+      <section class="make" id="work" aria-labelledby="make-h" style="--k: 4">
+        <div class="make__scene">
+          <div class="make__pin">
+            <div class="make__side">
+              <h2 class="make__h" id="make-h"><svg class="mark" viewBox="0 0 44 14" aria-hidden="true"><circle cx="5" cy="7" r="3" /><path d="M12 7h12" /><rect x="29" y="2" width="10" height="10" rx="1.5" /></svg>What I build</h2>
+              <ol class="make__list">
+                <li class="make__item is-on">
+                  <button class="make__b" type="button"><span class="make__n">01</span><span class="make__t">AI and retrieval systems</span></button>
+                  <div class="make__more"><div>
+                    <div class="make__mw"><canvas data-scene="rag" data-auto aria-hidden="true"></canvas><span class="tab"><b>Medical RAG Chatbot</b> <span>Python</span></span></div>
+                    <p class="make__s">RAG pipelines, semantic search and LLM tools that answer from real sources instead of guessing.</p>
+                    <p class="make__ex">Example: <a href="https://github.com/ud-ai/Medical_RAG_Chatbot" target="_blank" rel="noopener">Medical RAG Chatbot</a> <span class="make__lab">Python, LLMs, vector DB</span></p>
+                  </div></div>
+                </li>
+                <li class="make__item">
+                  <button class="make__b" type="button"><span class="make__n">02</span><span class="make__t">Interfaces for the web</span></button>
+                  <div class="make__more"><div>
+                    <div class="make__mw"><canvas data-scene="ui" data-auto aria-hidden="true"></canvas><span class="tab"><b>CodeBlitz</b> <span>React</span></span></div>
+                    <p class="make__s">React, Next.js and Tailwind interfaces that load fast and read clearly, built to a 100 Lighthouse performance score.</p>
+                    <p class="make__ex">Example: <a href="https://github.com/ud-ai/CodeBlitz" target="_blank" rel="noopener">CodeBlitz</a> <span class="make__lab">React, TypeScript, Vite</span></p>
+                  </div></div>
+                </li>
+                <li class="make__item">
+                  <button class="make__b" type="button"><span class="make__n">03</span><span class="make__t">Android apps</span></button>
+                  <div class="make__more"><div>
+                    <div class="make__mw"><canvas data-scene="android" data-auto aria-hidden="true"></canvas><span class="tab"><b>Android</b> <span>Kotlin</span></span></div>
+                    <p class="make__s">Native apps in Kotlin and Jetpack Compose, with Firebase for auth, data and sync.</p>
+                    <p class="make__ex"><span class="make__lab">Kotlin, Jetpack Compose, Firebase</span></p>
+                  </div></div>
+                </li>
+                <li class="make__item">
+                  <button class="make__b" type="button"><span class="make__n">04</span><span class="make__t">Systems that scale</span></button>
+                  <div class="make__more"><div>
+                    <div class="make__mw"><canvas data-scene="systems" data-auto aria-hidden="true"></canvas><span class="tab"><b>Backend</b> <span>Docker</span></span></div>
+                    <p class="make__s">Backends with Redis caching and Kafka queues, packaged with Docker and run on Kubernetes.</p>
+                    <p class="make__ex"><span class="make__lab">Redis, Kafka, Docker, Kubernetes</span></p>
+                  </div></div>
+                </li>
+              </ol>
+              <p class="make__tools">Languages: Python, Java, Kotlin, JavaScript, TypeScript, C++. Tools: React, Next.js, Tailwind, Vite, Firebase, Redis, Kafka, Docker, Kubernetes, Gemini API.</p>
+            </div>
+
+            <div class="make__frame" aria-hidden="true">
+              <div class="make__win is-on" data-loop="media/rag.mp4"><canvas data-scene="rag"></canvas><span class="tab"><b>Medical RAG Chatbot</b> <span>Python</span></span></div>
+              <div class="make__win" data-loop="media/web.mp4"><canvas data-scene="ui"></canvas><span class="tab"><b>CodeBlitz</b> <span>React</span></span></div>
+              <div class="make__win" data-loop="media/android.mp4"><canvas data-scene="android"></canvas><span class="tab"><b>Android</b> <span>Kotlin</span></span></div>
+              <div class="make__win" data-loop="media/systems.mp4"><canvas data-scene="systems"></canvas><span class="tab"><b>Backend</b> <span>Docker</span></span></div>
+            </div>
+          </div>
         </div>
-        <div class="contact-bottom"><span>© 2026 UDAY KANT</span><span>ENGINEERED WITH CURIOSITY</span><a href="#home">BACK TO TOP ↑</a></div>
+      </section>
+
+      <!-- ABOUT: a point becomes a line, the line becomes a story -->
+      <section class="story" id="about" aria-labelledby="about-h">
+        <a class="skip" href="#contact">Skip to the end of About</a>
+        <div class="story__track">
+          <div class="story__stage">
+            <div class="story__world">
+              <svg class="story__svg" aria-hidden="true">
+                <defs><clipPath id="story-clip"><rect class="story__clip" x="0" y="0" width="0" height="100%" /></clipPath></defs>
+                <path class="story__ghost" />
+                <path class="story__line" clip-path="url(#story-clip)" />
+                <g class="story__nodes"></g>
+                <circle class="story__pulse" r="8" />
+                <circle class="story__head" r="7" />
+              </svg>
+
+              <article class="plane" data-year="2022">
+                <div class="plane__pic"><img src="media/story-1.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">2022</p>
+                <h3 class="plane__t">School, with a head for maths</h3>
+                <p class="plane__b">CBSE at BNS DAV Public School, Jharkhand.</p>
+                <div class="board"><div><span>Score</span><i style="--v: .868"></i><b>86.8%</b></div></div>
+              </article>
+              <article class="plane" data-year="2023">
+                <div class="plane__pic"><img src="media/story-2.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">2023</p>
+                <h3 class="plane__t">Computer science</h3>
+                <p class="plane__b">B.Tech in Computer Science at Narula Institute of Technology, West Bengal. Class of 2027.</p>
+                <div class="pipe" style="--v: .667"><span class="on">2023</span><span class="on">2024</span><span class="on">2025</span><span>2027</span><b></b></div>
+              </article>
+              <article class="plane" data-year="2024">
+                <div class="plane__pic"><img src="media/story-3.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">Training</p>
+                <h3 class="plane__t">Four certifications</h3>
+                <p class="plane__b">Generative AI, MEAN full stack, SAP S/4HANA development, and NPTEL Java.</p>
+                <div class="board"><div><span>NPTEL Java</span><i style="--v: .87"></i><b>Elite</b></div></div>
+              </article>
+              <article class="plane" data-year="2025">
+                <div class="plane__pic"><img src="media/story-4.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">2025</p>
+                <h3 class="plane__t">Open source and hackathons</h3>
+                <p class="plane__b">GSSoC 2025 contributor, Smart India Hackathon participant, and coordinator for a team of 5 volunteers.</p>
+                <span class="chip"><i></i>GSSoC 2025</span>
+              </article>
+              <article class="plane" data-year="2025">
+                <div class="plane__pic"><img src="media/story-5.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">Projects</p>
+                <h3 class="plane__t">Building with AI</h3>
+                <p class="plane__b">A medical RAG chatbot, and CodeBlitz, a LeetCode tutor that teaches instead of solving.</p>
+                <div class="pipe" style="--v: 1"><span class="on">Retrieve</span><span class="on">Reason</span><span class="on">Respond</span><span class="on">Teach</span><b></b></div>
+              </article>
+              <article class="plane" data-year="2026 →">
+                <div class="plane__pic"><img src="media/story-6.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></div>
+                <p class="plane__yr">Now</p>
+                <h3 class="plane__t">Top 5% of the batch</h3>
+                <p class="plane__b">CGPA 9.05 and 300+ DSA problems solved. Looking for the first big internship.</p>
+                <div class="board"><div><span>CGPA</span><i style="--v: .905"></i><b>9.05</b></div></div>
+                <span class="chip chip--go"><i></i>Open to internships</span>
+              </article>
+            </div>
+
+            <div class="story__fade" aria-hidden="true"></div>
+            <div class="story__head-txt">
+              <h2 class="story__h" id="about-h"><svg class="mark" viewBox="0 0 44 14" aria-hidden="true"><circle cx="5" cy="7" r="3" /><path d="M12 7h12" /><rect x="29" y="2" width="10" height="10" rx="1.5" /></svg>About</h2>
+              <p class="story__chap" aria-hidden="true"><span class="story__n">00</span><span class="story__ct">A problem</span></p>
+            </div>
+            <p class="story__year" aria-hidden="true"></p>
+
+            <div class="story__final" id="contact">
+              <img class="portrait" src="media/photo.jpg" alt="Uday Kant" width="168" height="210" hidden />
+              <p class="story__word"><span class="name__a">Uday</span> <span class="name__b">Kant</span><span class="pt pt--stop"></span></p>
+              <p class="story__copy">I like the space where practical engineering meets curiosity: AI that answers from real sources, interfaces that feel obvious, and systems that learn. I’m looking for an internship where I can ship real work with a good team.</p>
+              <dl class="facts">
+                <div><dt>Based in</dt><dd>India</dd></div>
+                <div><dt>Studying</dt><dd>B.Tech CSE, 2023–2027</dd></div>
+                <div><dt>Open to</dt><dd>Internships, remote or on-site</dd></div>
+              </dl>
+              <p class="story__cta">
+                <a class="btn btn--accent" href="mailto:udaykant180@gmail.com?subject=Hello%20Uday">
+                  <span class="pt" aria-hidden="true"></span>
+                  <span class="roll"><span>Write an email</span><span aria-hidden="true" data-t="Write an email"></span></span>
+                </a>
+                <span class="links">
+                  <a href="mailto:udaykant180@gmail.com">udaykant180@gmail.com</a>
+                  <a href="https://www.linkedin.com/in/uday-kant-61a242298/" target="_blank" rel="noopener">LinkedIn</a>
+                  <a href="https://github.com/ud-ai" target="_blank" rel="noopener">GitHub</a>
+                  <a href="UdayResume.pdf?v=2026-11" target="_blank" rel="noopener">Resume</a>
+                </span>
+              </p>
+              <p class="story__last">
+                <span>A problem, a path, a product.</span>
+                <button class="ghost-btn story__again" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="1 4 1 10 7 10" /><path d="M3.5 15a9 9 0 1 0 2.1-9.4L1 10" /></svg>Play again</button>
+                <button class="ghost-btn motion-sw" type="button" aria-pressed="true"><span class="mo" aria-hidden="true"></span><span class="mo__on">Motion on</span><span class="mo__off">Motion off</span></button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INDEX: everything in one list -->
+      <section class="index" id="index" aria-labelledby="index-h">
+        <div class="index__head">
+          <h2 class="index__h" id="index-h"><svg class="mark" viewBox="0 0 44 14" aria-hidden="true"><circle cx="5" cy="7" r="3" /><path d="M12 7h12" /><rect x="29" y="2" width="10" height="10" rx="1.5" /></svg>Index</h2>
+          <p class="index__sum">2 projects · 4 certifications · 2 schools · 300+ problems solved</p>
+        </div>
+
+        <div class="index__groups">
+          <div class="group">
+            <p class="group__g">Projects</p>
+            <ul class="rows">
+              <li><a class="row" href="https://github.com/ud-ai/Medical_RAG_Chatbot" target="_blank" rel="noopener"><span class="row__w">Medical RAG Chatbot</span><span class="row__m">Python, LLMs, RAG, vector DB</span><span class="row__l">Repo<i>↗</i></span></a></li>
+              <li><a class="row" href="https://github.com/ud-ai/CodeBlitz" target="_blank" rel="noopener"><span class="row__w">CodeBlitz</span><span class="row__m">React, TypeScript, Gemini API, Vite</span><span class="row__l">Repo<i>↗</i></span></a></li>
+            </ul>
+          </div>
+          <div class="group">
+            <p class="group__g">Education</p>
+            <ul class="rows">
+              <li><div class="row"><span class="row__w">B.Tech in Computer Science</span><span class="row__m">Narula Institute of Technology · 2023–2027</span><span class="row__l">CGPA 9.05</span></div></li>
+              <li><div class="row"><span class="row__w">CBSE</span><span class="row__m">BNS DAV Public School · 2022</span><span class="row__l">86.8%</span></div></li>
+            </ul>
+          </div>
+          <div class="group">
+            <p class="group__g">Certifications</p>
+            <ul class="rows">
+              <li><div class="row"><span class="row__w">Generative AI Training</span><span class="row__m">Prompt design, model workflows, applied AI</span><span class="row__l">AI</span></div></li>
+              <li><div class="row"><span class="row__w">MEAN Full Stack Development</span><span class="row__m">Architecture, APIs, deployment</span><span class="row__l">Web</span></div></li>
+              <li><div class="row"><span class="row__w">SAP S/4HANA Development</span><span class="row__m">Enterprise tooling and process logic</span><span class="row__l">SAP</span></div></li>
+              <li><div class="row"><span class="row__w">NPTEL Java</span><span class="row__m">Elite certification</span><span class="row__l">87%</span></div></li>
+            </ul>
+          </div>
+          <div class="group">
+            <p class="group__g">Recognition</p>
+            <ul class="rows">
+              <li><div class="row"><span class="row__w">GSSoC 2025</span><span class="row__m">Open source contributor</span><span class="row__l">2025</span></div></li>
+              <li><div class="row"><span class="row__w">Smart India Hackathon</span><span class="row__m">Participant</span><span class="row__l">SIH</span></div></li>
+              <li><div class="row"><span class="row__w">Volunteer coordinator</span><span class="row__m">Led a team of 5 volunteers</span><span class="row__l">Lead</span></div></li>
+              <li><div class="row"><span class="row__w">300+ DSA problems</span><span class="row__m">Data structures and algorithms practice</span><span class="row__l">300+</span></div></li>
+            </ul>
+          </div>
+        </div>
       </section>
     </main>
+
+    <section class="marquee" aria-label="Get in touch">
+      <a class="marquee__a" href="mailto:udaykant180@gmail.com" aria-label="Email Uday at udaykant180@gmail.com">
+        <span class="marquee__track" aria-hidden="true">
+          <span>Let’s build <b>something</b><i class="pt"></i></span><span>udaykant180@gmail.com<i class="pt"></i></span><span>Let’s build <b>something</b><i class="pt"></i></span><span>udaykant180@gmail.com<i class="pt"></i></span>
+        </span>
+      </a>
+    </section>
+
+    <footer class="foot">
+      <a class="foot__mark" href="#top"><span class="name"><span class="name__a">Uday</span> <span class="name__b">Kant</span><span class="pt pt--stop" aria-hidden="true"></span></span></a>
+      <span class="foot__links">
+        <a href="mailto:udaykant180@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/uday-kant-61a242298/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ud-ai" target="_blank" rel="noopener">GitHub</a>
+      </span>
+      <span class="foot__end">
+        <button class="ghost-btn motion-sw" type="button" aria-pressed="true"><span class="mo" aria-hidden="true"></span><span class="mo__on">Motion on</span><span class="mo__off">Motion off</span></button>
+        <span>© 2026</span>
+        <a href="#top">Back to top ↑</a>
+      </span>
+    </footer>
+
+    <dialog class="film" aria-label="Video player">
+      <div class="film__top"><p class="film__t"></p><button class="film__x" type="button">Close</button></div>
+      <video class="film__v" controls playsinline preload="none"></video>
+    </dialog>
+
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

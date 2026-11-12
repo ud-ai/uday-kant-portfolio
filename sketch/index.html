@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Uday Kant, a hand-drawn portfolio</title>
+    <meta name="description" content="Walk through Uday Kant's sketchbook: AI projects, his story, skills and contact, drawn in pencil." />
+    <meta name="theme-color" content="#f1f0ec" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f1f0ec'/%3E%3Cpath d='M9 8v10a5 5 0 0 0 10 0V8M22 8v16M22 17l6-8M24 15l5 9' fill='none' stroke='%232a2a2a' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kalam:wght@300;400;700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="sketch.css" />
+  </head>
+  <body>
+    <a class="skip" href="../index.html">Skip to the accessible version</a>
+
+    <!-- loader: a pencil signs the initials while things are drawn -->
+    <div class="loader" role="status" aria-label="Loading">
+      <svg class="loader__sig" viewBox="0 0 300 220" aria-hidden="true">
+        <defs>
+          <filter id="pencil"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n" /><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" /></filter>
+        </defs>
+        <path class="sig" pathLength="1" d="M40 40 C38 80 34 120 48 140 C62 162 98 160 108 132 C116 110 112 72 110 40" />
+        <path class="sig" pathLength="1" d="M160 36 C162 80 160 130 158 176" />
+        <path class="sig" pathLength="1" d="M232 40 C210 70 186 96 162 116 C190 130 214 156 240 184" />
+        <path class="sig sig--acc" pathLength="1" d="M28 198 C90 186 170 190 270 178" />
+      </svg>
+      <div class="loader__pct" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" /><circle cx="60" cy="60" r="42" /></svg>
+        <b>0%</b>
+      </div>
+      <p class="loader__hint">sharpening pencils…</p>
+    </div>
+
+    <!-- outside: the front of the building, drawn on a 2D canvas -->
+    <canvas class="outside" aria-hidden="true"></canvas>
+
+    <!-- inside: the corridor, rendered with three.js -->
+    <canvas class="world" aria-hidden="true"></canvas>
+
+    <div class="hud" hidden>
+      <button class="tile torn" type="button" data-open="menu" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+      <button class="tile torn sound-btn" type="button" aria-pressed="true" aria-label="Sound">
+        <svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" /><path class="on" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" /><path class="off" d="M16 9.5l5 5M21 9.5l-5 5" /></svg>
+      </button>
+      <button class="tile torn" type="button" data-open="ach" aria-label="Achievements">
+        <svg viewBox="0 0 24 24"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4" /></svg>
+        <i class="tile__badge">0</i>
+      </button>
+    </div>
+    <button class="tile torn back-btn" type="button" aria-label="Back to the corridor" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg><span>EXIT</span>
+    </button>
+    <button class="tile torn play-btn" type="button" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /><path d="M12 1v5M12 18v5M1 12h5M18 12h5" /></svg><span>PLAY</span>
+    </button>
+    <p class="gamebar torn" role="status" hidden>🎈 <b class="gb-score">0</b> popped · ⏱ <b class="gb-time">30</b>s · best <b class="gb-best">0</b></p>
+    <div class="gun" aria-hidden="true" hidden><img alt="" /></div>
+    <div class="fade" aria-hidden="true"></div>
+    <div class="torch" aria-hidden="true" hidden><img alt="" /></div>
+    <div class="dim" aria-hidden="true"></div>
+    <p class="typed" aria-live="polite" hidden></p>
+    <div class="typetest" role="dialog" aria-label="Typing test" hidden></div>
+
+    <div class="toast torn" role="status" aria-live="polite">
+      <span class="toast__box" aria-hidden="true"></span>
+      <div><b class="toast__t">Explorer</b><span class="toast__d">Click the door to enter.</span></div>
+    </div>
+
+    <p class="scroll-hint" aria-hidden="true" hidden>scroll to walk <span>↓</span></p>
+    <div class="tip" aria-hidden="true"></div>
+
+    <!-- panels -->
+    <nav class="panel panel--menu torn" aria-label="Sections" hidden>
+      <p class="panel__h">Where to?</p>
+      <ol>
+        <li><button type="button" data-go="hello">Hello</button></li>
+        <li><button type="button" data-go="about">About me</button></li>
+        <li><button type="button" data-go="experience">Experience</button></li>
+        <li><button type="button" data-go="projects">Projects</button></li>
+        <li><button type="button" data-go="skills">Skills</button></li>
+        <li><button type="button" data-go="achievements">Achievements</button></li>
+        <li><button type="button" data-go="contact">Contact</button></li>
+      </ol>
+      <p class="panel__links"><a href="../UdayResume.pdf?v=2026-11" target="_blank" rel="noopener">Resume ↗</a><a href="../index.html">Classic site</a></p>
+    </nav>
+
+    <aside class="panel panel--ach torn" aria-label="Achievements" hidden>
+      <p class="panel__h">Achievements</p>
+      <ul class="ach"></ul>
+      <p class="ach__count">0 / 12 found</p>
+    </aside>
+
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+      <div class="modal__paper torn">
+        <button class="modal__x" type="button" aria-label="Close">✕</button>
+        <div class="modal__body"></div>
+      </div>
+    </div>
+
+    <p class="nogl" hidden>Your browser can't draw the 3D corridor. <a href="../index.html">Open the classic site</a> instead.</p>
+
+    <!-- everything, as plain text, for screen readers and search engines -->
+    <main class="sr">
+      <h1>Uday Kant, software developer</h1>
+      <p>Software engineer and B.Tech Computer Science student at Narula Institute of Technology, CGPA 9.05. Full Stack Developer Intern at GoDatabase LLP since June 2026. Based in India.</p>
+      <h2>Education</h2>
+      <p>B.Tech in Computer Science and Engineering, Narula Institute of Technology, Kolkata, Sep 2023 to Sep 2027, CGPA 9.05/10.</p>
+      <h2>Experience</h2>
+      <p>Full Stack Developer Intern, GoDatabase LLP, Pune (remote), June 2026 to present. Primary contributor to a hiring platform with 161 REST API routes, 33 data models and 61 Next.js pages. Built authentication flows, REST APIs in Node.js and Express.js, a MongoDB to PostgreSQL migration, JWT and OAuth login, 14-table relational schemas, and security fixes.</p>
+      <h2>Projects</h2>
+      <ul>
+        <li><a href="https://github.com/ud-ai/Medical_RAG_Chatbot">Medical RAG Chatbot</a>: a RAG chatbot over 2,000 MedQuAD medical Q&amp;A pairs with FAISS search and source references. Python, LangChain, FAISS, Gemini API, Gradio.</li>
+        <li><a href="https://github.com/ud-ai/CodeBlitz">CodeBlitz</a>: a Manifest V3 Chrome extension that adds an AI mock interviewer to LeetCode. React, TypeScript, Gemini API, Vite.</li>
+      </ul>
+      <h2>Story</h2>
+      <ol>
+        <li>2022: CBSE at BNS DAV Public School, Jharkhand, 86.8%.</li>
+        <li>2023: started B.Tech in Computer Science, Narula Institute of Technology.</li>
+        <li>Training: Generative AI &amp; LLMs, SAP S/4HANA development, NPTEL Java (Elite, 87%).</li>
+        <li>2025: GSSoC contributor, Smart India Hackathon participant, led 5 volunteers.</li>
+        <li>2026: Full Stack Developer Intern at GoDatabase LLP. CGPA 9.05, top 5% of the batch, 300+ DSA problems.</li>
+      </ol>
+      <h2>Skills</h2>
+      <ul>
+        <li>Languages: Python, Java, Kotlin, JavaScript, TypeScript, C++, SQL, HTML, CSS.</li>
+        <li>Frameworks and libraries: React.js, Next.js, Node.js, Express.js, Tailwind CSS, Jetpack Compose, LangChain, LangGraph, Gradio.</li>
+        <li>AI: LLMs, RAG, generative AI, AI agents, vector embeddings, semantic search, prompt engineering, NLP, FAISS, Sentence Transformers, Gemini API.</li>
+        <li>Backend and APIs: REST APIs, WebSockets, JWT, OAuth, Passport.js, Sequelize ORM.</li>
+        <li>Cloud and DevOps: Docker, Kubernetes, Apache Kafka, CI/CD, Git, GitHub, Vercel, Netlify.</li>
+        <li>Databases: PostgreSQL, MongoDB, MySQL, Firebase, Redis.</li>
+        <li>CS fundamentals: data structures and algorithms, OOP, DBMS.</li>
+      </ul>
+      <h2>Achievements and leadership</h2>
+      <ul>
+        <li>Top 5% of the B.Tech CSE cohort at Narula Institute of Technology.</li>
+        <li>300+ DSA problems solved across LeetCode, Codeforces and GeeksforGeeks; rank improved 20% in 3 months.</li>
+        <li>GSSoC 2025 contributor: 3 merged pull requests across 3 open-source repositories.</li>
+        <li>Smart India Hackathon: built a working College ERP system.</li>
+        <li>Quiz Competition Lead Coordinator: led 5 volunteers for 100+ participants.</li>
+      </ul>
+      <h2>Certifications</h2>
+      <ul>
+        <li>Generative AI and LLM Training (30 hours), Narula Institute of Technology, Feb 2026.</li>
+        <li>SAP S/4HANA Application Development, SAP University Alliances, Aug to Dec 2025.</li>
+        <li>Programming in Java, Elite (87%), NPTEL, IIT Kharagpur, Jul to Oct 2025.</li>
+      </ul>
+      <h2>Contact</h2>
+      <p><a href="mailto:udaykant180@gmail.com">udaykant180@gmail.com</a>, <a href="https://www.linkedin.com/in/uday-kant-61a242298/">LinkedIn</a>, <a href="https://github.com/ud-ai">GitHub</a>, <a href="../UdayResume.pdf?v=2026-11">Resume</a>.</p>
+    </main>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "roughjs": "https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.esm.js"
+        }
+      }
+    </script>
+    <script type="module" src="sketch.js"></script>
+  </body>
+</html>
